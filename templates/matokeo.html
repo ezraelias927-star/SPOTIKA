@@ -1,0 +1,14 @@
+{% extends "admin1base.html" %}
+{% block content %}
+<body>
+    <div class="container bg-light mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 ">
+                {% for t in matokeo %}
+                <a href="/teamA/{{ t.id}}" class="form-control text-center mb-3 mt-3 fw-bold">{{ t.timuA }}</nav>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

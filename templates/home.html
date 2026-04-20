@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+<div class="container bg-light">
+    <img src="{{ url_for('static',filename='images/bg.png')}}"alt='wakamalia' style="height:300px" class="w-100 mt-3">
+    <div class="row g-3 justify-content-center mt-3">
+        <div class="fw-bold text-center mt-3 text-warning display-1">
+            <a>KARIBU SPOTIKA</a>
+        </div>
+        <p class="text-center mt-2 fs-5">Karibu katika website yetu ambapo tunachambua kuhusu mechi mbalimbali
+            ktoka kwa wataalamu wetu wenye uzoefu wa zaidi ya miaka 10 katika beting
+        </p>
+        {% for h in hom %}
+        <div class="col-12 col-md-6">
+            <div class="card h-100 g-3 shadow rounded p-3">
+                <div class="card-body text-center p-3 mt-5">mechi ya leo</div>
+                <div class="ms-2 p-3 ">
+                    <span class=" p-3 rounded">  {{ h.tarehe }}</span>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="border rounded bg-light p-3 fw-bold">{{ h.timuA }}</div>
+                    <div class="p-3 fw-bold">vs</div>
+                    <div class="border rounded bg-light p-3 fw-bold">{{ h.timuB }}</div>
+                </div>
+                <div class="d-flex mt-2 justify-content-center">
+                        <div class=" p-3">{{ h.aina }}</div>
+                </div>
+                <div class="d-flex mt-2 justify-content-center">
+                    <div class="bg-success rounded p-3 mb-3 fw-bold"> odds {{ h.odds }}</div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}
+    
