@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    <div class="container bg-light mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="card rounded shadow">
+                    <div class="card-body text-center mt-3 p-5">
+                        <a >angalia mechi za <span class="fw-bold text-success fs-5">{{ matokeo[0].aina }}</span></a>
+                        {% for t in matokeo %}
+                        <div class="d-flex justify-content-between mt-5 ms-5 me-5 fw-bold">
+                            <a>{{ t.timuA }}</a>
+                            <a>vs</a>
+                            <a>{{ t.timuB }}</a>
+                            <a>{{ t.odds }}</a>
+                        </div>
+                        {% endfor %}
+                        <div class="text-center mt-5 bg-light rounded ">total odds ni<span class="fw-bold "> {{ jumla }}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

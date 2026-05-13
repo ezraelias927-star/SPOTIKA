@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+<script>
+    let sehemu=document.querySelector('.m')
+    fetch('/kesho')
+      .then(res=>{
+        console.log(res)
+        return res.json()})
+      .then(data=>{
+        card=''
+        console.log(data)
+        data.forEach(m => {
+            card+=`
+            <div class="card">
+                <div>${m.timuA}</div>
+            </div>`
+            
+        });
+        sehemu.innerHTML=card
+      })
+
+</script>
+{% endblock %}
+    

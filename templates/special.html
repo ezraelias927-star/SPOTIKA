@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <p class="mt-5 text-center"> HIZI HAPA NI MECHI ZILIZOCHAMBULIWA KWA UMAKINI NA WATAALAMU WETU HIVYO ZINA UHAKIKA WA ASILIMIA
+                    <span class="fw-bold fs-5 p-2">80</span> ZA USHINDI 
+                </p>
+                <div class="card text center p-5 mt-2 shadow">
+                    <div class="ms-3">
+                        <span class="bg-light rounded p-3">{{ matokeo[0].tarehe }}</span>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <p class="mt-5 fw-bold">special tips za uhakika</p>
+                    </div>
+                    {% for t in matokeo %}
+                    <div class="d-flex align-items-center  gap-2 mt-2">
+                        <p class="p-3 mb-5 bg-light flex-fill rounded text-center"> {{ t.timuA }} </p>
+                        <p class="p-3 flex-fill  mb-5 text-center"> vs </p>
+                        <p class="p-3 mb-5 bg-light flex-fill rounded text-center"> {{ t.timuB }} </p>
+                        <p class="p-3 bg-light mb-5 flex-fill rounded text-center">{{ t.odds }}</p>
+                    </div>
+                    {% endfor %}
+                    <div class="d-flex justify-content-center">
+                        <p>jumla ya odds<span class="p-1 fw-bold"></span>{{ jumla }}</p>
+                    </div>               
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

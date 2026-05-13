@@ -1,0 +1,18 @@
+{% extends "admin1base.html" %}
+{% block content %}
+<body>
+    <div class="bg-light">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="mt-5 text-center mb-3 fw-bold"> andika taarifa za {{ user.timuA }} </div>
+                <form action="/teamA/{{user.id}}" method="POST">
+                    <input type="number"  name="magoli" placeholder="andika magoli " class="form-control mb-3 text-center">
+                    <input type="number"  name="corner" placeholder="andika corner hapa" class="form-control mb-3 text-center">
+                    <input type="number"  name="fomu" placeholder="andika fomu hapa" class="form-control mb-3 text-center">
+                    <button type="submit" class="form-control mb-3 text-center">submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

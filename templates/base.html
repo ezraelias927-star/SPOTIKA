@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>betting system</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .active {
+            color: yellow !important;
+            background:light
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <nav class="navbar bg-dark navbar-dark navbar-expand-lg sticky-top">
+        <div class="container-fluid p-2">
+                <div class='navbar-brand fw-bold'>SPOTIKA</div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#waka">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="waka">
+                <div class="navbar-nav ms-auto ">
+                <a class="nav-link  ms-2 fw-bold {% if request.path=='/'%}active{%endif%} " href="/">HOME</a>
+                <a class="nav-link  ms-2 fw-bold {% if request.path=='/register' %}active{% endif %}" href="/register">JISAJILI</a>
+                <a class="nav-link  ms-2 fw-bold {% if request.path=='/joins'%}active{% endif %}" href="/joins">ANGALIA MACHAGUO</a>
+                <a class="nav-link  ms-2 rounded  fw-bold {% if request.path=='/spec'%}active{%endif%}" href="/spec">SPECIAL TIPS</a>
+                </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    {% block content %}
+    {% endblock %}
+</body>
+

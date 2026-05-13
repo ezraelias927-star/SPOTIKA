@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+    <div class="container mt-5 bg-light">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="text-center fs-5">ANGALIA MACHAGUO MBALIMBALI</div>
+                {% with messages = get_flashed_messages() %}
+                 {% if messages %}
+                    {% for message in messages %}
+                    <div class="text-danger mt-3 text-center">
+                      {{ message }}
+                    </div>
+                    {% endfor %}
+                 {% endif %}
+                {% endwith %}
+                <div class="card text-center shadow mt-1 mb-5 p-5 rounded">
+                {% for t in matokeo %}
+                <a href="/anga/{{t.aina}}" class="form-control text-center mb-5 fw-bold bg-light mt-2">{{ t.aina }}</a>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

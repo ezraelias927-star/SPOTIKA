@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    <div class="container bg-light">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="text-center mt-4 fw-bold text-primary fs-5">LOGIN HAPA</div>
+                <div class="card mt-3 rounded shadow p-5">
+                   <div class="d-flex justify-content-center">
+                    {% with messages=get_flashed_messages(with_categories=true) %}
+                     {% if messages %}
+                       {% for category,message in messages%}
+                       <p class="text-danger">{{ message}} </p>
+                        {%endfor%} 
+                     {%endif%}
+                    {%endwith%}     
+                   </div>          
+                <form action="/login" method="POST">
+                    <input type="text" name="username" placeholder="andika username" class="form-control mb-5 mt-2 text-center">
+                    <input type="password" name="password" placeholder="andika password" class="form-control mb-5 text-center">
+                    <input type="text" name="email" placeholder="andika email" class="form-control mb-5 text-center"> 
+                    <button type="submit" class="form-control mb-5 text-primary">LOGIN</button>
+                </form>
+                <div class="mb-3">
+                    <a href="/register" class="p-5 mb-3">bado hujajisajili?sasa!</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

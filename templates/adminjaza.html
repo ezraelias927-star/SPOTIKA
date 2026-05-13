@@ -1,0 +1,27 @@
+{% extends "admin1base.html" %}
+{% block content %}
+<body>
+    <div class="container bg-light shadow mt-5 mb-5 p-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="card p-5 mt-5">
+                <form action="/andika" method="POST">
+                    <div class="form-label align-items-center text-center">
+                    <input type="text" name="timuA" placeholder="andika team A " class="form-control mb-3 mt-4 text-center">
+                    <input type="text" name="timuB" placeholder="andika team B" class="form-control pw-3 mb-3 text-center">
+                    <input type="text" name="aina" placeholder="andika aina ya chaguo " class="form-control mb-3 text-center">
+                    <input type="number" step="any" name="odds" placeholder="andika odds hapa" class="form-control mb-3 text-center">
+                    <input type="text" name="special" placeholder="special" class="form-control mb-3 text-center">
+                    <input type="text" name="tarehe" placeholder="date" class="form-control mb-3 text-center">
+                    <button type="submit" class="form-control  text-center">submit</button>
+                    </div>
+                </form>
+                </div>
+                <div class="text-center text-decoration-none mt-5">
+                    <a href="/nyumbani">ANDIKA TAARIFA YA KILA MECHI</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
