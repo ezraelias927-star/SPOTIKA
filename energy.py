@@ -1,5 +1,6 @@
 from flask import Flask,render_template,redirect,url_for,request,session,flash,jsonify
 from werkzeug.security import generate_password_hash,check_password_hash
+import requests
 app=Flask(__name__)
 app.secret_key="hhdjjfifgiururuuu7476578686tnfgdye7ee6y3y3n"
 from flask_sqlalchemy import SQLAlchemy 
@@ -8,6 +9,10 @@ app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///mimi.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 db=SQLAlchemy(app)
 from datetime import datetime,timedelta
+from dotenv import load_dotenv
+load_dotenv()
+import os
+app.secret_key=os.getenv('APPKEY')
     
 
 class mechi(db.Model):
@@ -149,6 +154,77 @@ def teamA(id):
             return 'umekosea'
     user=mechi.query.get(id)
     return render_template('ente.html',user=user)
+
+#kwenda vip
+@app.route('/tospecial')
+def tospecial():
+   return render_template('tospecial.html')
+
+#kuanzisha malipo
+@app.route('/vip')
+def vip():
+    url="https://cybqa.pesapal.com/pesapalv3/api/Auth/RequestToken"
+    KEY=os.getenv('KEY')
+    SECRET=os.getenv('SECRET')
+    payload={
+        'consumer_key':KEY,
+        'consumer_secret':SECRET
+    }
+    headers={
+        'Accept':'application/json',
+        'Content-Type':'application/json'
+    }
+    response=requests.post(url=url,json=payload,headers=headers)
+    data=response.json()
+    token=data.get('token')
+    print(data)
+    
+    #kupata ipn kwa sasa
+    ipn_id=os.getenv('IPN_ID')
+    # 1. Endpoint ya kutengeneza Order/Invoice
+    submit_order_url = "https://cybqa.pesapal.com/pesapalv3/api/Transactions/SubmitOrderRequest"
+    
+    # Headers zinabaki vile vile zikiwa na Bearer Token wetu
+    headers_order = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {token}'
+    }
+    print('hello')
+    
+    # 2. Payload ya Muamala (Hapa ndio unaweka data za hela sasa)
+
+    leo=datetime.now()
+    formatted=leo.strftime('%Y%m%d%H%M%S%f')
+    
+    payload_order = {
+        "id":formatted,                 
+        "currency": "TZS",                  
+        "amount": 10000.00,                  
+        "description": "Malipo ya Huduma",     
+        "callback_url": "https://spotika.dig.co.tz/payment-callback", 
+        "notification_id": ipn_id,            
+        "billing_address": {
+            "email_address": "ezra@gmail.com",
+            "phone_number": "0712345678",
+            "first_name": "Ezra",
+            "last_name": "Developer"
+        }
+    }  
+
+
+    
+    # 3. Kupiga API ya Pesapal kuomba hiyo link
+    response_order = requests.post(url=submit_order_url, json=payload_order, headers=headers_order)
+    data_order = response_order.json()
+    redirect_url=data_order['redirect_url']
+    print(data_order)
+    return redirect(redirect_url)
+
+#kupata callback url
+@app.route('/payment-callback')
+def callback():
+   return 'sdfghjkgfdfghjkgfdfghjkjhgfdfgj'
 
 #KUANGALIA AINA ZA MECHI OPTION
 @app.route('/anga/<aina>')
